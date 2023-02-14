@@ -93,11 +93,11 @@ print('\nTraining classifiers...')
 
 clf_1.fit(alexnet_features_array, train_labels)
 print('> clf_1 trained on AlexNet features')
-print(f'Best parameters: {clf_1.best_params_}')
+print(f'Best parameters: {clf_1.best_params_}\n')
 
 clf_2.fit(vgg16_features_array, train_labels)
 print('> clf_2 trained on VGG16 features')
-print(f'Best parameters: {clf_2.best_params_}')
+print(f'Best parameters: {clf_2.best_params_}\n')
 
 clf_3.fit(vgg19_features_array, train_labels)
 print('> clf_3 trained on VGG19 features')
@@ -147,6 +147,8 @@ for i, (image, label) in enumerate(test_dataloader):
         vgg19_features_array = np.array(vgg19_features_list)
         xSlice_predictions = clf_3.predict(vgg19_features_array)
         vgg19_predictions.append(np.bincount(xSlice_predictions).argmax())
+        
+        y_true.append(test_labels[i])
 
         alexnet_features_list, vgg16_features_list, vgg19_features_list = [], [], []
 
