@@ -38,7 +38,7 @@ param_grid = {
     'kernel': ['linear', 'rbf']
     }
 clf = GridSearchCV(svm.SVC(), param_grid, refit=True, verbose=3)
-print(f'Three classifiers created:\n{clf}')
+print(f'One classifier created:\n{clf}')
 print('-'*25)
 """
 # Classifier (Adaboost) instantiation with GridSearch
@@ -48,7 +48,7 @@ param_grid = {
     'algorithm': ['SAMME', 'SAMME.R']
     }
 clf = GridSearchCV(AdaBoostClassifier(), param_grid, refit=True, verbose=3)
-print(f'Three classifiers created:\n{clf}')
+print(f'One classifier created:\n{clf}')
 print('-'*25)
 """
 
