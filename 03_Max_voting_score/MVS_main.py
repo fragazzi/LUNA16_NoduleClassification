@@ -198,8 +198,12 @@ for i, (image, label) in enumerate(test_dataloader):
         pv10 = adaboost_1.predict(concatenated_features_array)
         pv10 = np.bincount(pv10).argmax()
 
-        nodule_prediction = pv1 + pv2 + pv3 + pv4 + pv5 + pv6 + pv7 + pv8 + pv9 + pv10
-        nodule_prediction = 1 if nodule_prediction >= 5 else 0
+        # average of pv1-pv3 and pv6-pv8
+        pv11 = (pv1 + pv2 + pv3) / 3
+        pv12 = (pv6 + pv7 + pv8) / 3
+
+        nodule_prediction = pv1 + pv2 + pv3 + pv4 + pv5 + pv6 + pv7 + pv8 + pv9 + pv10 + pv11 + pv12
+        nodule_prediction = 1 if nodule_prediction >= 6 else 0
 
         y_pred.append(nodule_prediction)
         y_true.append(test_labels[i])
